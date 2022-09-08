@@ -11,5 +11,11 @@ cisco3 = {
 }
 net_connect = ConnectHandler(**cisco3)
 
-output = net_connect.send_command('show version')
+config_items = [
+	"ip name-server 1.1.1.1",
+	"ip name-server 1.0.0.1",
+	"ip domain-lookup"
+]
+print('apply config')
+output = net_connect.send_config_set(config_items)
 print(output)
