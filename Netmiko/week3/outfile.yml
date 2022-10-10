@@ -1,0 +1,6 @@
+[{device_type: Cisco IOS-XE, hostname: cisco3.lasthop.io, password: hedgehog, username: sonic},
+  {device_type: Cisco IOS-XE, hostname: cisco4.lasthop.io, password: echidnas, username: knuckles},
+  {device_type: Arista vEOS switch, hostname: arista1.lasthop.io, password: plumber,
+    username: mario}, {device_type: Juniper SRX, hostname: srx2.lasthop.io, password: plumber,
+    username: luigi}, {device_type: NX-OSv Switch, hostname: nxos1.lasthop.io, password: dinosaur,
+    username: yoshi}]

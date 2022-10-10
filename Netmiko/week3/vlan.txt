@@ -1,0 +1,6 @@
+vlan 2
+name hr-2
+vlan 20
+name it-2
+vlan 55
+name finance-2
