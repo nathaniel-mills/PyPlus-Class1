@@ -1,7 +1,7 @@
 from netmiko import ConnectHandler
 
 
-print ("show prompt from device")
+print ("Retrieve running config")
 
 cisco4 = {
 	'device_type': 'cisco_ios',
@@ -13,21 +13,21 @@ cisco4 = {
 }
 net_connect = ConnectHandler(**cisco4)
 
-print('show prompt')
-print(net_connect.find_prompt())
+print('show run')
+net_connect = ConnectHandler(**cisco4)
 
-net_connect.config_mode()
-print(net_connect.find_prompt())
-
-net_connect.exit_config_mode()
-print(net_connect.find_prompt())
-
-net_connect.write_channel('disable\n')
-print(net_connect.find_prompt())
-time.sleep(2)
-
-output = net_connect.read_channel()
+output = net_connect.send_command('show run')
 print(output)
 
-net_connect.enable()
-print(net_connect.find_prompt())
+with open('cisco4_config.txt', 'w') as f:
+    f.write(output)
+
+from ciscoconfparse import CiscoConfParse
+
+CiscoConfParse("cisco4_config.txt")
+
+cisco_obj = CiscoConfParse("cisco4_config.txt")
+print(cisco_obj)
+
+print("BGP PEERS:")
+print(cisco_obj.find_objects_w_child(parentspec=r"^interface", childspec=r"^\s+ip address")
