@@ -1,6 +1,6 @@
 import yaml
 from yaml.loader import SafeLoader
-
+from netmiko import ConnectHandler
 
 print ("Open the yaml file")
 
